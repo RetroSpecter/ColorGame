@@ -4,9 +4,15 @@ using System.Linq;
 
 public class ColorManager : MonoBehaviour {
 
+    public KeyCode key_SelectColor;
+    public KeyCode key_ToggleColorRotation;
+
 	public enum GameColor {White, Red, Green, Blue};
-    public GameColor curColor;
-	public GameColor curSelectedColor;
+    public GameColor curUsingColor; //state we are in
+	public GameColor curSelectableColor; //state we can change to
+
+    public delegate void OnColorEvent(int color);
+    public event OnColorEvent OnColorChange;
 
     [SerializeField] private bool rotatingColors;
     public float rotateEveryXSeconds;
@@ -17,11 +23,20 @@ public class ColorManager : MonoBehaviour {
 	void Start () {
         rotateColor();
         secondsUntilRotation = rotateEveryXSeconds;
-        
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetKeyDown(key_SelectColor)) {
+            changeColor(curSelectableColor);
+        }
+
+        if (Input.GetKeyDown(key_ToggleColorRotation)) {
+            toggleRotation();
+        }
+
+        //color rotator
         if (rotatingColors) { 
             if (secondsUntilRotation <= 0) {
                 secondsUntilRotation = rotateEveryXSeconds;
@@ -30,6 +45,11 @@ public class ColorManager : MonoBehaviour {
             secondsUntilRotation -= Time.deltaTime;
         }
 	}
+
+    public void changeColor(GameColor newColor) {
+        curUsingColor = newColor;
+        OnColorChange((int)curUsingColor);
+    }
 
     public void toggleRotation() {
         rotatingColors = !rotatingColors;
@@ -43,7 +63,7 @@ public class ColorManager : MonoBehaviour {
     public void rotateColor() {
         //if we haven't unlocked any colors, dont do anything
         if (!(onColors.Count(c => c) <= 1)) {
-            int currentColor = (int)curSelectedColor;
+            int currentColor = (int)curSelectableColor;
             int nextColor= getNextColorInt(currentColor);
             //while (!onColors[nextColor]) {
             //    nextColor = getNextColorInt();
@@ -53,7 +73,7 @@ public class ColorManager : MonoBehaviour {
                 nextColor = getNextColorInt(nextColor);
             }
             
-            curSelectedColor = (GameColor)nextColor;
+            curSelectableColor = (GameColor)nextColor;
 
         }
 

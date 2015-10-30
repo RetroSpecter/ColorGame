@@ -16,7 +16,7 @@ public class UI_ColorView : MonoBehaviour {
 	void Update () {
         Color textColor;
         string curColorName;
-        int curColor = (int)cm.curSelectedColor;
+        int curColor = (int)cm.curSelectableColor;
         if(curColor == 0) {textColor = Color.white; curColorName = "white";}
         else if (curColor == 1) {textColor = Color.red; curColorName = "red";}
         else if (curColor == 2) {textColor = Color.green; curColorName = "green";}
@@ -24,8 +24,8 @@ public class UI_ColorView : MonoBehaviour {
 
         //t.color = textColor;
         t.text = (
-            "<color="+cm.curColor.ToString()+">" + cm.curColor.ToString() + "</color>"
-            + " - " +
+            "<color="+cm.curUsingColor.ToString()+">" + cm.curUsingColor.ToString() + "</color>"
+            + " | " +
             "<color="+curColorName+">" + curColorName + " - " + cm.getSecondsUntilRotation() + "</color>"
             );
 
