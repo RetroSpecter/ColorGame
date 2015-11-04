@@ -3,9 +3,9 @@ using System.Collections;
 
 public class ColorToggleBehavior : MonoBehaviour {
 
-    public Material[] mat = new Material[4];
+    public Sprite[] mat = new Sprite[4];
 
-    private Renderer rend;
+    private SpriteRenderer rend;
     private Collider2D coll;
     private ColorManager CM;
     private bool isOn;
@@ -14,7 +14,7 @@ public class ColorToggleBehavior : MonoBehaviour {
     void Awake() {
         CM = GameObject.Find("GameManager").GetComponent<ColorManager>();
         coll = this.GetComponent<Collider2D>();
-        rend = this.GetComponent<Renderer>();
+        rend = this.GetComponent<SpriteRenderer>();
         // Start the event listener
         CM.OnColorChange += OnColorChange;
         
@@ -50,7 +50,7 @@ public class ColorToggleBehavior : MonoBehaviour {
     public void changeTexture() {
         rend.enabled = true;
         if (mat[color] != null) {
-            rend.material = mat[color];
+            rend.sprite = mat[color];
         }
         else {
             rend.enabled = false;
