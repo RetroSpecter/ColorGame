@@ -24,11 +24,14 @@ public class PlayerController : MonoBehaviour {
 	public bool wallSliding;
 	public bool walling;
 	public float WallSpeedMax = 10f;
+
+	private Animator anim;
 	
 
 
 	void Start () {
 		myRigidBody2D = GetComponent<Rigidbody2D> ();
+		anim = GetComponent<Animator> ();
 	}
 	
 	void FixedUpdate () {
@@ -64,7 +67,10 @@ public class PlayerController : MonoBehaviour {
 		if (grounded) {
 			doubleJump = false;
 			walling = false;
+
+
 		}
+		anim.SetBool("Grounded", grounded);
 
 			if (Input.GetKeyDown (KeyCode.UpArrow) && grounded) {
 				Jump ();
@@ -94,6 +100,8 @@ public class PlayerController : MonoBehaviour {
 		} else if (myRigidBody2D.velocity.x < 0) {
 			transform.rotation = Quaternion.Euler (0, 180, 0);
 		}
+
+		anim.SetFloat ("Speed", Mathf.Abs(myRigidBody2D.velocity.x));
 		}
 
 	public void Jump(){
