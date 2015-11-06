@@ -13,6 +13,8 @@ public class ColorManager : MonoBehaviour {
 
     public delegate void OnColorEvent(int color);
     public event OnColorEvent OnColorChange;
+    public event OnColorEvent OnSecondaryColorChange;
+
 
     [SerializeField] private bool rotatingColors;
     public float rotateEveryXSeconds;
@@ -74,7 +76,7 @@ public class ColorManager : MonoBehaviour {
             }
             
             curSelectableColor = (GameColor)nextColor;
-
+            OnSecondaryColorChange((int)(curSelectableColor));
         }
 
     }

@@ -3,21 +3,30 @@ using System.Collections;
 
 public class ColorToggleBehavior : MonoBehaviour {
 
+    
+    
     public Sprite[] mat = new Sprite[4];
+
+
 
     private SpriteRenderer rend;
     private Collider2D coll;
     private ColorManager CM;
     private bool isOn;
     private int color;
+    public bool usingSecondaryColor;
     // Awake
     void Awake() {
         CM = GameObject.Find("GameManager").GetComponent<ColorManager>();
         coll = this.GetComponent<Collider2D>();
         rend = this.GetComponent<SpriteRenderer>();
         // Start the event listener
-        CM.OnColorChange += OnColorChange;
-        
+        if (usingSecondaryColor) {
+            CM.OnSecondaryColorChange += OnColorChange;
+        }
+        else { 
+            CM.OnColorChange += OnColorChange;
+        }
         OnColorChange((int)CM.curUsingColor);
     }
     public bool[] activeColors = { true, false, false, false };
@@ -35,25 +44,25 @@ public class ColorToggleBehavior : MonoBehaviour {
 
     public void turnOn() {
         isOn = true;
-        coll.enabled = true;
+        if (coll) { coll.enabled = true; }
         changeTexture();
         ;
     }
 
     public void turnOff() {
         isOn = false;
-        coll.enabled = false;
+        if (coll) { coll.enabled = false; }
         changeTexture();
         ;
     }
 
     public void changeTexture() {
-        rend.enabled = true;
+        if (rend) { rend.enabled = true; }
         if (mat[color] != null) {
             rend.sprite = mat[color];
         }
         else {
-            rend.enabled = false;
+            if (rend) { rend.enabled = false; }
         }
     }
 
