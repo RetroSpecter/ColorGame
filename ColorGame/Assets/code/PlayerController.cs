@@ -72,9 +72,9 @@ public class PlayerController : MonoBehaviour {
 		}
 		anim.SetBool("Grounded", grounded);
 
-			if (Input.GetKeyDown (KeyCode.UpArrow) && grounded) {
+		if ((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && grounded) {
 				Jump ();
-		} else if(Input.GetKeyDown (KeyCode.UpArrow) && !grounded && walled){
+		} else if((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && !grounded && walled){
 			doubleJump = false;
 			walling = true;
 			if(transform.rotation.y == 0){
@@ -83,12 +83,12 @@ public class PlayerController : MonoBehaviour {
 				myRigidBody2D.velocity = new Vector2 (wallPush, wallJump);
 			}
 		}
-		else if (Input.GetKeyDown (KeyCode.UpArrow) && !doubleJump && !grounded){
+		else if ((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && !doubleJump && !grounded){
 			walling = false;
 			Jump ();
 			doubleJump = true;
 		} 
-		if (Input.GetKeyUp (KeyCode.UpArrow) && !wallSliding) {
+		if ((Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyUp (KeyCode.Space)) && !wallSliding) {
 			if(myRigidBody2D.velocity.y > minJumpHeight){
 			myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, minJumpHeight);
 			}
