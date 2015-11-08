@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		anim.SetFloat ("Speed", Mathf.Abs(myRigidBody2D.velocity.x));
+		anim.SetFloat ("AirSpeed",myRigidBody2D.velocity.y);
 		}
 
 	public void Jump(){
