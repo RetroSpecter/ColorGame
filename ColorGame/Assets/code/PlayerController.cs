@@ -57,12 +57,16 @@ public class PlayerController : MonoBehaviour {
 		//wall Sliding
 		wallSliding = false;
 		if (walled && !grounded && myRigidBody2D.velocity.y < 0) {
+			if((transform.rotation.y > 0 && Input.GetKey(KeyCode.LeftArrow)) || (transform.rotation.y == 0) && Input.GetKey(KeyCode.RightArrow)){
 			wallSliding = true;
 			walling = false;
 			if (myRigidBody2D.velocity.y < -WallSpeedMax){
-				myRigidBody2D.velocity = new Vector2 (myRigidBody2D.velocity.x, -WallSpeedMax);
+				{
+				myRigidBody2D.velocity = new Vector2 (myRigidBody2D.velocity.x, -WallSpeedMax);}
+				}
 			}
 		}
+		anim.SetBool ("Slide",wallSliding);
 		//Jumping
 		if (grounded) {
 			doubleJump = false;
@@ -72,9 +76,10 @@ public class PlayerController : MonoBehaviour {
 		}
 		anim.SetBool("Grounded", grounded);
 
+
 		if ((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && grounded) {
 				Jump ();
-		} else if((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && !grounded && walled){
+		} else if((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && !grounded && wallSliding){
 			doubleJump = false;
 			walling = true;
 			if(transform.rotation.y == 0){

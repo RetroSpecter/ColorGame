@@ -9,6 +9,8 @@ public class CameraBehavior : MonoBehaviour {
     public GameObject target;
     public Vector3 offset;
     Vector3 targetPos;
+	//Used to Disable Camera
+	public bool isFollowing;
     // Use this for initialization
     void Start() {
         targetPos = transform.position;
@@ -16,7 +18,7 @@ public class CameraBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
-        if (target) {
+        if (target && isFollowing) {
             Vector3 posNoZ = transform.position;
             posNoZ.z = target.transform.position.z;
 
