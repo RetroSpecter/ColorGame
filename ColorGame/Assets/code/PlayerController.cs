@@ -96,9 +96,11 @@ public class PlayerController : MonoBehaviour {
 
 		//turning
 		if (myRigidBody2D.velocity.x > 0) {
-			transform.rotation = Quaternion.Euler (0, 0, 0);
+            transform.localScale = new Vector3(1, 1, 1);
+            //transform.rotation = Quaternion.Euler (0, 0, 0);
 		} else if (myRigidBody2D.velocity.x < 0) {
-			transform.rotation = Quaternion.Euler (0, 180, 0);
+            transform.localScale = new Vector3(-1, 1, 1);
+            //transform.rotation = Quaternion.Euler (0, 180, 0);
 		}
 
 		anim.SetFloat ("Speed", Mathf.Abs(myRigidBody2D.velocity.x));
