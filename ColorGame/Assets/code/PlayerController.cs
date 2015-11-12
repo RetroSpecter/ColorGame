@@ -43,11 +43,11 @@ public class PlayerController : MonoBehaviour {
 		//Left and Right Movement
 		moveVelocity = 0f;
 
-		if (Input.GetKey (KeyCode.RightArrow)) {
+		if (Input.GetAxis("Horizontal") > 0) {
 				moveVelocity = runSpeed;
 		}
 
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+        if (Input.GetAxis("Horizontal") < 0) {
 				moveVelocity = -runSpeed;
 			} 
 		if(!walling){
@@ -72,9 +72,10 @@ public class PlayerController : MonoBehaviour {
 		}
 		anim.SetBool("Grounded", grounded);
 
-		if ((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && grounded) {
+        if (Input.GetButtonDown("Jump") && grounded) {
 				Jump ();
-		} else if((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && !grounded && walled){
+        }
+        else if (Input.GetButtonDown("Jump") && !grounded && walled) {
 			doubleJump = false;
 			walling = true;
 			if(transform.rotation.y == 0){
@@ -83,12 +84,12 @@ public class PlayerController : MonoBehaviour {
 				myRigidBody2D.velocity = new Vector2 (wallPush, wallJump);
 			}
 		}
-		else if ((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && !doubleJump && !grounded){
+        else if (Input.GetButtonDown("Jump") && !doubleJump && !grounded) {
 			walling = false;
 			Jump ();
 			doubleJump = true;
-		} 
-		if ((Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyUp (KeyCode.Space)) && !wallSliding) {
+		}
+        if (Input.GetButtonDown("Jump") && !wallSliding) {
 			if(myRigidBody2D.velocity.y > minJumpHeight){
 			myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, minJumpHeight);
 			}
@@ -96,11 +97,11 @@ public class PlayerController : MonoBehaviour {
 
 		//turning
 		if (myRigidBody2D.velocity.x > 0) {
-            transform.localScale = new Vector3(1, 1, 1);
-            //transform.rotation = Quaternion.Euler (0, 0, 0);
+            //transform.localScale = new Vector3(1, 1, 1);
+            transform.rotation = Quaternion.Euler (0, 0, 0);
 		} else if (myRigidBody2D.velocity.x < 0) {
-            transform.localScale = new Vector3(-1, 1, 1);
-            //transform.rotation = Quaternion.Euler (0, 180, 0);
+            //transform.localScale = new Vector3(-1, 1, 1);
+            transform.rotation = Quaternion.Euler (0, 180, 0);
 		}
 
 		anim.SetFloat ("Speed", Mathf.Abs(myRigidBody2D.velocity.x));

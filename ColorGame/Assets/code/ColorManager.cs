@@ -5,8 +5,11 @@ using System.Linq;
 public class ColorManager : MonoBehaviour {
 
     public KeyCode key_SelectColor_Red;
+    public KeyCode pad_SelectColor_Red;
     public KeyCode key_SelectColor_Green;
+    public KeyCode pad_SelectColor_Green;
     public KeyCode key_SelectColor_Blue;
+    public KeyCode pad_SelectColor_Blue;
     //public KeyCode key_ToggleColorRotation;
 
 	public enum GameColor {White, Red, Green, Blue};
@@ -32,13 +35,13 @@ public class ColorManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(key_SelectColor_Red) && onColors[1]) {
+        if (Input.GetButtonDown("TurnRed") && onColors[1]) {
             changeColor(GameColor.Red);
         }
-        else if (Input.GetKeyDown(key_SelectColor_Green) && onColors[2]) {
+        else if (Input.GetButtonDown("TurnGreen") && onColors[2]) {
             changeColor(GameColor.Green);
         }
-        else if (Input.GetKeyDown(key_SelectColor_Blue) && onColors[3]) {
+        else if (Input.GetButtonDown("TurnBlue") && onColors[3]) {
             changeColor(GameColor.Blue);
         }
 
