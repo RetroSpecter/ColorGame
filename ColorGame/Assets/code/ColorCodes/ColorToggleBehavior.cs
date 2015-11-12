@@ -8,13 +8,13 @@ public class ColorToggleBehavior : MonoBehaviour {
     public Sprite[] mat = new Sprite[4];
 
 
-
     private SpriteRenderer rend;
     private Collider2D coll;
     private ColorManager CM;
     private bool isOn;
     private int color;
     public bool usingSecondaryColor;
+	public GameObject blockParticle;
     // Awake
     void Awake() {
         CM = GameObject.Find("GameManager").GetComponent<ColorManager>();
@@ -47,10 +47,11 @@ public class ColorToggleBehavior : MonoBehaviour {
         if (coll) { coll.enabled = true; }
         changeTexture();
         ;
+		spawnParticle();
     }
 
     public void turnOff() {
-        isOn = false;
+		isOn = false;
         if (coll) { coll.enabled = false; }
         changeTexture();
         ;
@@ -65,5 +66,8 @@ public class ColorToggleBehavior : MonoBehaviour {
             if (rend) { rend.enabled = false; }
         }
     }
+	public void spawnParticle(){
+		Instantiate (blockParticle, transform.position, Quaternion.Euler (270,0,0));
+	}
 
 }
