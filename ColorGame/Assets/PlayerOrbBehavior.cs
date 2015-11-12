@@ -6,6 +6,7 @@ public class PlayerOrbBehavior : MonoBehaviour {
     public GameObject colorObject;
     private SpriteRenderer rend;
     private ColorManager CM;
+
     private Animator anim;
     private bool isOn;
 
@@ -39,11 +40,13 @@ public class PlayerOrbBehavior : MonoBehaviour {
         isOn = true;
         rend.enabled = true;
         //anim.animation = orbAnim
+        anim.SetBool("Rotating", true);
     }
 
     public void turnOff() {
         isOn = false;
         rend.enabled = false;
+        anim.SetBool("Rotating", false);
     }
 
 }

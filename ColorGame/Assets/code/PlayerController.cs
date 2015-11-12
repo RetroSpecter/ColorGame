@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+    public GameObject playerObject;
+
 	public float runSpeed;
 	public float minJumpHeight;
 	public float maxJumpHeight;
@@ -30,8 +32,8 @@ public class PlayerController : MonoBehaviour {
 
 
 	void Start () {
-		myRigidBody2D = GetComponent<Rigidbody2D> ();
-		anim = GetComponent<Animator> ();
+        myRigidBody2D = GetComponent<Rigidbody2D>();
+        anim = playerObject.GetComponent<Animator>();
 	}
 	
 	void FixedUpdate () {
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 				moveVelocity = -runSpeed;
 			} 
 		if(!walling){
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveVelocity, GetComponent<Rigidbody2D> ().velocity.y);
+            myRigidBody2D.velocity = new Vector2(moveVelocity, myRigidBody2D.velocity.y);
 		}
 
 		//wall Sliding
@@ -102,10 +104,10 @@ public class PlayerController : MonoBehaviour {
 		//turning
 		if (myRigidBody2D.velocity.x > 0) {
             //transform.localScale = new Vector3(1, 1, 1);
-            transform.rotation = Quaternion.Euler (0, 0, 0);
+            playerObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 		} else if (myRigidBody2D.velocity.x < 0) {
             //transform.localScale = new Vector3(-1, 1, 1);
-            transform.rotation = Quaternion.Euler (0, 180, 0);
+            playerObject.transform.rotation = Quaternion.Euler(0, 180, 0);
 		}
 
 		anim.SetFloat ("Speed", Mathf.Abs(myRigidBody2D.velocity.x));
