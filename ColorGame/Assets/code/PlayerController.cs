@@ -43,11 +43,11 @@ public class PlayerController : MonoBehaviour {
 		//Left and Right Movement
 		moveVelocity = 0f;
 
-		if (Input.GetAxis("Horizontal") > 0) {
+		if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0) {
 				moveVelocity = runSpeed;
 		}
 
-        if (Input.GetAxis("Horizontal") < 0) {
+        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") < 0) {
 				moveVelocity = -runSpeed;
 			} 
 		if(!walling){
@@ -76,17 +76,10 @@ public class PlayerController : MonoBehaviour {
 		}
 		anim.SetBool("Grounded", grounded);
 
-<<<<<<< HEAD
         if (Input.GetButtonDown("Jump") && grounded) {
 				Jump ();
         }
         else if (Input.GetButtonDown("Jump") && !grounded && walled) {
-=======
-
-		if ((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && grounded) {
-				Jump ();
-		} else if((Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Space)) && !grounded && wallSliding){
->>>>>>> origin/master
 			doubleJump = false;
 			walling = true;
 			if(transform.rotation.y == 0){
