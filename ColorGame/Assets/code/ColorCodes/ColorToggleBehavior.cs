@@ -22,7 +22,7 @@ public class ColorToggleBehavior : MonoBehaviour {
         rend = this.GetComponent<SpriteRenderer>();
         // Start the event listener
         if (usingSecondaryColor) {
-            CM.OnSecondaryColorChange += OnColorChange;
+            //CM.OnSecondaryColorChange += OnColorChange;
         }
         else { 
             CM.OnColorChange += OnColorChange;
