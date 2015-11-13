@@ -55,11 +55,12 @@ public class PlayerController : MonoBehaviour {
 		if(!walling){
             myRigidBody2D.velocity = new Vector2(moveVelocity, myRigidBody2D.velocity.y);
 		}
+	
 
 		//wall Sliding
 		wallSliding = false;
 		if (walled && !grounded && myRigidBody2D.velocity.y < 0) {
-			if((transform.rotation.y > 0 && Input.GetKey(KeyCode.LeftArrow)) || (transform.rotation.y == 0) && Input.GetKey(KeyCode.RightArrow)){
+			if((playerObject.transform.rotation.y > 0 && Input.GetKey(KeyCode.LeftArrow)) || (playerObject.transform.rotation.y == 0 && Input.GetKey(KeyCode.RightArrow))){
 			wallSliding = true;
 			walling = false;
 			if (myRigidBody2D.velocity.y < -WallSpeedMax){
@@ -84,9 +85,9 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetButtonDown("Jump") && !grounded && walled) {
 			doubleJump = false;
 			walling = true;
-			if(transform.rotation.y == 0){
+			if(playerObject.transform.rotation.y == 0){
 				myRigidBody2D.velocity = new Vector2 (-wallPush, wallJump);
-			} else if (transform.rotation.y != 0){
+			} else if (playerObject.transform.rotation.y != 0){
 				myRigidBody2D.velocity = new Vector2 (wallPush, wallJump);
 			}
 		}
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 			Jump ();
 			doubleJump = true;
 		}
-        if (Input.GetButtonDown("Jump") && !wallSliding) {
+        if (Input.GetButtonUp("Jump") && !wallSliding) {
 			if(myRigidBody2D.velocity.y > minJumpHeight){
 			myRigidBody2D.velocity = new Vector2(myRigidBody2D.velocity.x, minJumpHeight);
 			}

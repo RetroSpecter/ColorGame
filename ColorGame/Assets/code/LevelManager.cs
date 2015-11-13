@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour {
 
 	public IEnumerator RespawnPlayerCo(){
 		player.enabled = false;
-		player.GetComponent<Renderer> ().enabled = false;
+		player.playerObject.GetComponent<Renderer> ().enabled = false;
 		camera.isFollowing = false;
 		//player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		player.GetComponent<Rigidbody2D> ().gravityScale = 0;
@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour {
 		player.transform.position = CurrentCheckpoint.transform.position;
 		player.enabled = true;
 		camera.isFollowing = true;
-		player.GetComponent<Renderer> ().enabled = true;
+		player.playerObject.GetComponent<Renderer> ().enabled = true;
 		player.GetComponent<Rigidbody2D> ().gravityScale = 3;
 		}
 
