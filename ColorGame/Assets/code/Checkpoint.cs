@@ -15,7 +15,7 @@ public class Checkpoint : MonoBehaviour {
 		
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.name == "Player (1)") {
+		if (other.name == "sprite_4") {
 			levelManager.CurrentCheckpoint = gameObject;
 		}
 	}

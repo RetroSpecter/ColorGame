@@ -85,9 +85,9 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetButtonDown("Jump") && !grounded && walled) {
 			doubleJump = false;
 			walling = true;
-			if(playerObject.transform.rotation.y == 0){
+			if(playerObject.transform.rotation.y == 0 && Input.GetKey(KeyCode.RightArrow)){
 				myRigidBody2D.velocity = new Vector2 (-wallPush, wallJump);
-			} else if (playerObject.transform.rotation.y != 0){
+			} else if (playerObject.transform.rotation.y > 0 && Input.GetKey(KeyCode.LeftArrow)){
 				myRigidBody2D.velocity = new Vector2 (wallPush, wallJump);
 			}
 		}
