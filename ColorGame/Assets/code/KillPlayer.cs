@@ -17,6 +17,7 @@ public class KillPlayer : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		
 		levelManager.RespawnPlayer(); 
+		AudioManager.instance.playSound(0);
 		
 	}
 }

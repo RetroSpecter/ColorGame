@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour {
 	private PlayerController player;
 	public float respawnDelay;
 	private CameraBehavior camera;
+	public GameObject respawnParticle;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +38,9 @@ public class LevelManager : MonoBehaviour {
 		camera.isFollowing = true;
 		player.playerObject.GetComponent<Renderer> ().enabled = true;
 		player.GetComponent<Rigidbody2D> ().gravityScale = 3;
+		player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 15);
+		Instantiate(respawnParticle,CurrentCheckpoint.transform.position, CurrentCheckpoint.transform.rotation);
+		camera.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y,camera.transform.position.z);
 		}
 
 }
