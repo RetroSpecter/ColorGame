@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: 1df0f6f0691eff64ab85d927f70e11bc
+timeCreated: 1447728833
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Flower1
+    21300002: backgroundObjects_0
+    21300004: backgroundObjects_1
+    21300006: backgroundObjects_2
+    21300008: backgroundObjects_3
+    21300010: backgroundObjects_4
+    21300012: backgroundObjects_5
+    21300014: backgroundObjects_6
+    21300016: backgroundObjects_7
+    21300018: backgroundObjects_8
+    21300020: backgroundObjects_9
+    21300022: backgroundObjects_10
+    21300024: backgroundObjects_11
+    21300026: backgroundObjects_12
+    21300028: backgroundObjects_13
+    21300030: backgroundObjects_14
+    21300032: backgroundObjects_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Flower1
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 215
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 215
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 215
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_2
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 215
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_3
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 186
+        width: 40
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_4
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 186
+        width: 40
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_5
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 220
+        width: 48
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 220
+        width: 48
+        height: 23
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_7
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 135
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 135
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_9
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 135
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_10
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 94
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_11
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 94
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_12
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 94
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_13
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 53
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_14
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 53
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: backgroundObjects_15
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 53
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
