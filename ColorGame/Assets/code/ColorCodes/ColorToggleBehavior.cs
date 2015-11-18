@@ -46,7 +46,7 @@ public class ColorToggleBehavior : MonoBehaviour {
         isOn = true;
         if (coll) { coll.enabled = true; }
         changeTexture();
-        ;
+        
 		spawnParticle();
     }
 
@@ -54,20 +54,24 @@ public class ColorToggleBehavior : MonoBehaviour {
 		isOn = false;
         if (coll) { coll.enabled = false; }
         changeTexture();
-        ;
+        
     }
 
     public void changeTexture() {
         if (rend) { rend.enabled = true; }
+        
         if (mat[color] != null) {
             rend.sprite = mat[color];
         }
-        else {
-            if (rend) { rend.enabled = false; }
+
+        else if (rend) { rend.enabled = false; }
+        
+    }
+
+	public void spawnParticle(){
+        if (blockParticle != null) { 
+	    	Instantiate (blockParticle, transform.position, Quaternion.Euler (270,0,0));
         }
     }
-	public void spawnParticle(){
-		Instantiate (blockParticle, transform.position, Quaternion.Euler (270,0,0));
-	}
 
 }

@@ -40,13 +40,13 @@ public class PlayerOrbBehavior : MonoBehaviour {
         isOn = true;
         rend.enabled = true;
         //anim.animation = orbAnim
-        anim.SetBool("Rotating", true);
+        anim.SetBool("Rotating", false);
     }
 
     public void turnOff() {
         isOn = false;
         rend.enabled = false;
-        anim.SetBool("Rotating", false);
+        anim.SetBool("Rotating", true);
     }
 
 }

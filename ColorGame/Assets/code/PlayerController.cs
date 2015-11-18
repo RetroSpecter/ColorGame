@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour {
 	}
 	void Update () {
 
+
+
+
 		//Left and Right Movement
 		moveVelocity = 0f;
 
