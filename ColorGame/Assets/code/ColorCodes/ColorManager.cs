@@ -63,12 +63,13 @@ public class ColorManager : MonoBehaviour {
     }
 
     public void addColor(int newColor) {
+        print(newColor);
         //enable new color
         onColors[newColor] = true;
         //change us to the new color
         changeColor((GameColor)newColor);
         //event
-        //AddNewColor(newColor);
+        AddNewColor(newColor);
     }
 
 

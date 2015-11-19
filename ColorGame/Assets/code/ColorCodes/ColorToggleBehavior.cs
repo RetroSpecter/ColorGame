@@ -21,12 +21,12 @@ public class ColorToggleBehavior : MonoBehaviour {
         coll = this.GetComponent<Collider2D>();
         rend = this.GetComponent<SpriteRenderer>();
         // Start the event listener
-        if (usingSecondaryColor) {
+        //if (usingSecondaryColor) {
             //CM.OnSecondaryColorChange += OnColorChange;
-        }
-        else { 
+        //}
+        //else { 
             CM.OnColorChange += OnColorChange;
-        }
+        //}
         OnColorChange((int)CM.curUsingColor);
     }
     public bool[] activeColors = { true, false, false, false };
