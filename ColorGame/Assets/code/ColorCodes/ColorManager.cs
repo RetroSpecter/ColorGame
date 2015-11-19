@@ -4,6 +4,9 @@ using System.Linq;
 
 public class ColorManager : MonoBehaviour {
 
+    public static ColorManager instance;
+
+
     public KeyCode key_SelectColor_Red;
     public KeyCode pad_SelectColor_Red;
     public KeyCode key_SelectColor_Green;
@@ -19,6 +22,9 @@ public class ColorManager : MonoBehaviour {
 	
     public delegate void OnColorEvent(int color);
     public event OnColorEvent OnColorChange;
+
+    public delegate void AddColorEvent(int color);
+    public event AddColorEvent AddNewColor;
     //public event OnColorEvent OnSecondaryColorChange;
 
 
@@ -28,8 +34,7 @@ public class ColorManager : MonoBehaviour {
     
     // Use this for initialization
 	void Start () {
-        //rotateColor();
-        //secondsUntilRotation = rotateEveryXSeconds;
+        instance = this;
 	}
 	
 	// Update is called once per frame
@@ -55,6 +60,15 @@ public class ColorManager : MonoBehaviour {
             curUsingColor = newColor;
         }
         OnColorChange((int)curUsingColor);
+    }
+
+    public void addColor(int newColor) {
+        //enable new color
+        onColors[newColor] = true;
+        //change us to the new color
+        changeColor((GameColor)newColor);
+        //event
+        //AddNewColor(newColor);
     }
 
 

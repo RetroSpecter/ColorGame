@@ -122,4 +122,17 @@ public class PlayerController : MonoBehaviour {
 		myRigidBody2D.velocity =  new Vector2 (myRigidBody2D.velocity.y,maxJumpHeight);
 	}
 
+    //pick up things
+    void OnTriggerEnter2D(Collider2D other) {
+        print(other.gameObject);
+        //grab new colors
+        if (other.gameObject.CompareTag("Color Pickup")) {
+            ColorPickupBehavior c = other.GetComponent<ColorPickupBehavior>();
+            
+            //adds the new color, destroys the object;
+            c.Pickup();
+
+        }
+    }
+
 }
