@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public float runSpeed;
 	public float minJumpHeight;
 	public float maxJumpHeight;
-	private bool doubleJump;
+	public bool doubleJump;
 	private Rigidbody2D myRigidBody2D;
 	private float moveVelocity;
 	
