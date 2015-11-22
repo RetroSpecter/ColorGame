@@ -58,18 +58,20 @@ public class ColorToggleBehavior : MonoBehaviour {
     }
 
     public void changeTexture() {
-        if (rend) { rend.enabled = true; }
+     if(rend != null){
+			if (rend) { rend.enabled = true; }
         
         if (mat[color] != null) {
             rend.sprite = mat[color];
         }
 
         else if (rend) { rend.enabled = false; }
+		}
         
     }
 
 	public void spawnParticle(){
-        if (blockParticle != null) { 
+        if (blockParticle != null && rend != null) { 
 	    	Instantiate (blockParticle, transform.position, Quaternion.Euler (270,0,0));
         }
     }

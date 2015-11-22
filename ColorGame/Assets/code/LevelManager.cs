@@ -42,5 +42,9 @@ public class LevelManager : MonoBehaviour {
 		Instantiate(respawnParticle,CurrentCheckpoint.transform.position, CurrentCheckpoint.transform.rotation);
 		camera.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y,camera.transform.position.z);
 		}
+	public void EndLevel(){
+		player.active = false;
+		player.GetComponent<Rigidbody2D> ().velocity = new Vector3 (15,0,0);
+	}
 
 }
