@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour {
 	public float WallSpeedMax = 10f;
 
 	private Animator anim;
-	public bool active;
 	
 
 
@@ -48,14 +47,14 @@ public class PlayerController : MonoBehaviour {
 
 		//Left and Right Movement
 		moveVelocity = 0f;
-		if(active == true){
+
 		if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0) {
 				moveVelocity = runSpeed;
 		}
 
         if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") < 0) {
 				moveVelocity = -runSpeed;
-			} }
+			} 
 		if(!walling){
             myRigidBody2D.velocity = new Vector2(moveVelocity, myRigidBody2D.velocity.y);
 			}

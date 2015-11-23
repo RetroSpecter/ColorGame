@@ -43,8 +43,9 @@ public class LevelManager : MonoBehaviour {
 		camera.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y,camera.transform.position.z);
 		}
 	public void EndLevel(){
-		player.active = false;
-		player.GetComponent<Rigidbody2D> ().velocity = new Vector3 (15,0,0);
+		player.enabled = false;
+		player.GetComponent<Rigidbody2D> ().velocity = new Vector3 (0,0,0);
+		player.GetComponent<Rigidbody2D> ().AddForce (transform.right * 5f);
 	}
 
 }
