@@ -7,12 +7,14 @@ public class LevelManager : MonoBehaviour {
 	private PlayerController player;
 	public float respawnDelay;
 	private CameraBehavior camera;
+	private ToggleEndLevelUI ToggleUI;
 	public GameObject respawnParticle;
 
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerController> ();
 		camera = FindObjectOfType<CameraBehavior> ();
+		ToggleUI = FindObjectOfType<ToggleEndLevelUI>();
 	}
 	
 	// Update is called once per frame
@@ -43,9 +45,8 @@ public class LevelManager : MonoBehaviour {
 		camera.transform.position = new Vector3 (player.transform.position.x, player.transform.position.y,camera.transform.position.z);
 		}
 	public void EndLevel(){
-		player.enabled = false;
-		player.GetComponent<Rigidbody2D> ().velocity = new Vector3 (0,0,0);
-		player.GetComponent<Rigidbody2D> ().AddForce (transform.right * 5f);
+		player.active = false;
+		ToggleUI.visibility = true;
 	}
 
 }

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public Transform groundCheck;
 	public float groundCheckRadius;
 	public LayerMask WhatisGround;
-	private bool grounded;
+	public bool grounded;
 
 	public Transform wallCheck;
 	public float wallCheckRadius;
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
 	public float WallSpeedMax = 10f;
 
 	private Animator anim;
+	public bool active;
 	
 
 
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour {
 		//Left and Right Movement
 		moveVelocity = 0f;
 
+		if(active == true){
 		if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0) {
 				moveVelocity = runSpeed;
 		}
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") < 0) {
 				moveVelocity = -runSpeed;
 			} 
+		}
 		if(!walling){
             myRigidBody2D.velocity = new Vector2(moveVelocity, myRigidBody2D.velocity.y);
 			}
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		anim.SetBool("Grounded", grounded);
 
-        if (Input.GetButtonDown("Jump") && grounded) {
+        if (Input.GetButtonDown("Jump") && grounded && active) {
 				Jump ();
         }
         else if (Input.GetButtonDown("Jump") && !grounded && walled) {
