@@ -17,7 +17,8 @@ public class PausedScript : MonoBehaviour {
 			Time.timeScale = 1f;
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			isPaused = ! isPaused;
+            Debug.Log("pause");
+            isPaused = ! isPaused;
 		}
 	}
 }
