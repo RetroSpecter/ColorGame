@@ -6,8 +6,8 @@ public class ColorToggleBehaviorShader : MonoBehaviour
 
 
 
-    public string[] mat = new string[4];
-    public Color myColor = new Color(0f,0f,0f,1f);
+    public Color[] mat = new Color[4];
+   
 
     private SpriteRenderer rend;
     private Collider2D coll;
@@ -61,9 +61,8 @@ public class ColorToggleBehaviorShader : MonoBehaviour
         isOn = false;
         if (coll) {
             coll.enabled = false;
-    
-            GetComponent<Renderer>().material.SetColor("_Color", Color.grey);
         }
+        changeTexture();
 
     }
 
@@ -71,11 +70,12 @@ public class ColorToggleBehaviorShader : MonoBehaviour
     {
         if (rend != null)
         {
+            Debug.Log("change");
             if (rend) { rend.enabled = true; }
 
             if (mat[color] != null)
             {
-                Color enemyColor = new Color (myColor.r,myColor.g,myColor.b,1f);
+                Color enemyColor = new Color(mat[color].r, mat[color].g, mat[color].b, 1f);
                 GetComponent<Renderer>().material.SetColor("_Color", enemyColor);
             }
             else if (rend) { rend.enabled = false; }
