@@ -24,10 +24,6 @@ public class ToggleEndLevelUI : MonoBehaviour {
 		} else {
 			canvas.alpha = 1f;
             }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            next();
-        }
 		anim.SetBool ("Level Beat", visibility);
 	}
     public void next()

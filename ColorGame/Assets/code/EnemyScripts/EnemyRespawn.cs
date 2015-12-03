@@ -7,7 +7,8 @@ public class EnemyRespawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Instantiate(Spawner, this.transform.position, this.transform.rotation);
+        Object Span;
+        Span = Instantiate(Spawner, this.transform.position, this.transform.rotation);
     }
 	
 	// Update is called once per frame
