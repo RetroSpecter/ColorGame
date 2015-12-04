@@ -5,7 +5,7 @@ public class ColorToggleBehavior : MonoBehaviour {
 
     
     
-    public Sprite[] mat = new Sprite[4];
+    public Sprite[] mat = new Sprite[5];
 
 
     private SpriteRenderer rend;
@@ -40,6 +40,10 @@ public class ColorToggleBehavior : MonoBehaviour {
         else if (!(activeColors[col])) {
             turnOff();
         }
+    }
+
+    public void finishLevel() {
+        OnColorChange(5);
     }
 
     public void turnOn() {
