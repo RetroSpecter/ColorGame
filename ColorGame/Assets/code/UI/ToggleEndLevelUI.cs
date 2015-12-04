@@ -23,7 +23,7 @@ public class ToggleEndLevelUI : MonoBehaviour {
 			canvas.alpha = 0f;
 		} else {
 			canvas.alpha = 1f;
-		}
+            }
 		anim.SetBool ("Level Beat", visibility);
 	}
     public void next()

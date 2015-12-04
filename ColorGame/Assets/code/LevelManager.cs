@@ -9,19 +9,21 @@ public class LevelManager : MonoBehaviour {
 	private CameraBehavior camera;
 	private ToggleEndLevelUI ToggleUI;
 	public GameObject respawnParticle;
+    public GameObject spawn;
 
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerController> ();
 		camera = FindObjectOfType<CameraBehavior> ();
 		ToggleUI = FindObjectOfType<ToggleEndLevelUI>();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.P)) {
-			RespawnPlayer ();
-		}
+        if (Input.GetKeyDown(KeyCode.X)) {
+            
+        }
 	}
 
 	public void RespawnPlayer(){
