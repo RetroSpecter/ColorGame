@@ -8,6 +8,9 @@ public class ToggleEndLevelUI : MonoBehaviour {
 	private Animator anim;
 	public GameObject WinText;
 
+    public string nextLevel;
+    public string levelSelect;
+
 	// Use this for initialization
 	void Start () {
 		canvas = GetComponent<CanvasGroup>();
@@ -23,4 +26,12 @@ public class ToggleEndLevelUI : MonoBehaviour {
 		}
 		anim.SetBool ("Level Beat", visibility);
 	}
+    public void next()
+    {
+        Application.LoadLevel(nextLevel);
+    }
+    public void menu()
+    {
+        Application.LoadLevel(levelSelect);
+    }
 }

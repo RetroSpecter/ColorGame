@@ -3,6 +3,10 @@ using System.Collections;
 
 public class EndLevel : MonoBehaviour {
 
+    public string nextLevel;
+
+    public string levelSelect;
+
 	public LevelManager levelManager;
 	// Use this for initialization
 	void Start () {
