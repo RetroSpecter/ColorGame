@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerOrbBehavior : MonoBehaviour {
 
     public GameObject colorObject;
+    public GameObject colorObjectLight;
+    private Light light;
     private SpriteRenderer rend;
     private ColorManager CM;
 
@@ -17,11 +19,13 @@ public class PlayerOrbBehavior : MonoBehaviour {
         CM = GameObject.Find("GameManager").GetComponent<ColorManager>();
         rend = colorObject.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
+        light = colorObjectLight.GetComponent<Light>();
         // Start the event listener
         CM.OnColorChange += OnColorChange;
         CM.AddNewColor += enableThis;
         this.GetComponent<SpriteRenderer>().enabled = false;
         rend.enabled = false;
+        light.enabled = false;
         OnColorChange((int)curUsingColor);
     }
 
@@ -31,6 +35,7 @@ public class PlayerOrbBehavior : MonoBehaviour {
         if (color == (int)curUsingColor) {
             this.GetComponent<SpriteRenderer>().enabled = true;
             rend.enabled = true;
+            light.enabled = true;
         }
     }
     
@@ -47,6 +52,7 @@ public class PlayerOrbBehavior : MonoBehaviour {
 
     public void turnOn() {
         isOn = true;
+        //light.enabled = true;
         //rend.enabled = true;
         //anim.animation = orbAnim
         anim.SetBool("Rotating", false);
@@ -54,6 +60,7 @@ public class PlayerOrbBehavior : MonoBehaviour {
 
     public void turnOff() {
         isOn = false;
+        //light.enabled = false;
         //rend.enabled = false;
         anim.SetBool("Rotating", true);
     }

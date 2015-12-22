@@ -28,7 +28,7 @@ public class CameraBehavior : MonoBehaviour {
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
 
-            transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.25f);
+            transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.15f);
 
         }
     }

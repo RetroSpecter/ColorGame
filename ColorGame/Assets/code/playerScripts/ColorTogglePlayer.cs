@@ -3,18 +3,14 @@ using System.Collections;
 
 public class ColorTogglePlayer : MonoBehaviour
 {
-
-
-
-    public Color[] mat = new Color[4];
+    public Color[] colors = new Color[4];
 
 
     private SpriteRenderer rend;
     private Collider2D coll;
     private ColorManager CM;
     private bool isOn;
-    private int color;
-    public bool usingSecondaryColor;
+    private int curColor;
     public GameObject blockParticle;
     // Awake
     void Awake()
@@ -22,69 +18,49 @@ public class ColorTogglePlayer : MonoBehaviour
         CM = GameObject.Find("GameManager").GetComponent<ColorManager>();
         coll = this.GetComponent<Collider2D>();
         rend = this.GetComponent<SpriteRenderer>();
-        // Start the event listener
-        //if (usingSecondaryColor) {
-        //CM.OnSecondaryColorChange += OnColorChange;
-        //}
-        //else { 
+
         CM.OnColorChange += OnColorChange;
-        //}
-        OnColorChange((int)CM.curUsingColor);
+        //OnColorChange((int)CM.curUsingColor);
     }
-    public bool[] activeColors = { true, false, false, false };
     public void OnColorChange(int col)
     {
-        color = col;
-        //if we changed to a color we are on for, and are not currently on
-        if (activeColors[col])
-        {
-            turnOn();
-        }
+        changeTexture(col);
     }
 
-    public void turnOn()
-    {
-        isOn = true;
-        if (coll) { coll.enabled = true; }
-        changeTexture();
 
-        spawnParticle();
+    public void changeTexture(int newColor)
+    {
+        if (colors[newColor] != null) {
+            //Color enemyColor = new Color(mat[color].r, mat[color].g, mat[color].b, 1f);
+            print("memes");
+            /*(Hashtable tweenParams = new Hashtable();
+            tweenParams.Add("from", colors[curColor]);
+            tweenParams.Add("to", colors[newColor]);
+            tweenParams.Add("time", 1f);
+            tweenParams.Add("onupdate", "OnColorUpdated");
+
+            iTween.ColorTo(rend.gameObject, tweenParams);
+            //rend.color = colors[newColor];*/
+
+            iTween.ColorTo(gameObject, colors[newColor], 0.25f);
+            print("dreams");
+            curColor = newColor;
+        }
+        
+
     }
 
-    public void turnOff()
-    {
-        isOn = false;
-        if (coll)
-        {
-            coll.enabled = false;
-        }
-        changeTexture();
+    void Update() {
 
-    }
-
-    public void changeTexture()
-    {
-        if (rend != null)
-        {
-            Debug.Log("change");
-            if (rend) { rend.enabled = true; }
-
-            if (mat[color] != null)
-            {
-                Color enemyColor = new Color(mat[color].r, mat[color].g, mat[color].b, 1f);
-                GetComponent<Renderer>().material.SetColor("_Color", enemyColor);
-            }
-            else if (rend) { rend.enabled = false; }
-        }
-
+        //rend.color = Color.Lerp(colors[curColor], colors[newColor], 10f);
     }
 
     public void spawnParticle()
     {
-        if (blockParticle != null && rend != null)
+        /*if (blockParticle != null && rend != null)
         {
             Instantiate(blockParticle, transform.position, Quaternion.Euler(270, 0, 0));
-        }
+        }*/
     }
 
 }
