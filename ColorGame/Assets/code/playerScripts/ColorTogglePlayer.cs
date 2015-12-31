@@ -31,7 +31,19 @@ public class ColorTogglePlayer : MonoBehaviour
     public void changeTexture(int newColor)
     {
         if (colors[newColor] != null) {
+            //Color enemyColor = new Color(mat[color].r, mat[color].g, mat[color].b, 1f);
+            print("memes");
+            /*(Hashtable tweenParams = new Hashtable();
+            tweenParams.Add("from", colors[curColor]);
+            tweenParams.Add("to", colors[newColor]);
+            tweenParams.Add("time", 1f);
+            tweenParams.Add("onupdate", "OnColorUpdated");
+
+            iTween.ColorTo(rend.gameObject, tweenParams);
+            //rend.color = colors[newColor];*/
+
             iTween.ColorTo(gameObject, colors[newColor], 0.25f);
+            print("dreams");
             curColor = newColor;
         }
         

@@ -24,11 +24,11 @@ public class CameraBehavior : MonoBehaviour {
 
             Vector3 targetDirection = (target.transform.position - posNoZ);
 
-            interpVelocity = targetDirection.magnitude * 100f;
+            interpVelocity = targetDirection.magnitude * 5f;
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
 
-            transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.03f);
+            transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.15f);
 
         }
     }

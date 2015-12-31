@@ -70,7 +70,7 @@ public class ColorToggleBehaviorShader : MonoBehaviour
     {
         if (rend != null)
         {
-            //Debug.Log("change");
+            Debug.Log("change");
             if (rend) { rend.enabled = true; }
 
             if (mat[color] != null)
