@@ -55,15 +55,18 @@ public class ColorManager : MonoBehaviour {
 	}
 
     public void changeColor(GameColor newColor) {
-        if (newColor == curUsingColor) {
-            curUsingColor = GameColor.White;
-            levelManager.SlowDown();
+        if (Time.timeScale != 0)
+        {
+            if (newColor == curUsingColor) {
+                curUsingColor = GameColor.White;
+                levelManager.SlowDown();
+            }
+            else {
+                curUsingColor = newColor;
+                levelManager.SlowDown();
+            }
+            OnColorChange((int)curUsingColor);
         }
-        else {
-            curUsingColor = newColor;
-            levelManager.SlowDown();
-        }
-        OnColorChange((int)curUsingColor);
     }
 
     public void addColor(int newColor) {

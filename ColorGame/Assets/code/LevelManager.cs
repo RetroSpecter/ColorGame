@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject respawnParticle;
     public GameObject spawn;
     public bool slowDownPlease;
+  
+    public GameObject PauseMenu;
 
 	// Use this for initialization
 	void Start () {
@@ -18,14 +20,15 @@ public class LevelManager : MonoBehaviour {
 		camera = FindObjectOfType<CameraBehavior> ();
 		ToggleUI = FindObjectOfType<ToggleEndLevelUI>();
         
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (slowDownPlease)
+        if (slowDownPlease && !PauseMenu.GetComponent<PausedScript>().isPaused)
         {
             Time.timeScale = 0.5f;
-        } else if (!slowDownPlease)
+        } else if (!slowDownPlease && !PauseMenu.GetComponent<PausedScript>().isPaused)
         {
             Time.timeScale = 1f;
         }
@@ -65,9 +68,10 @@ public class LevelManager : MonoBehaviour {
 	}
    public IEnumerator SlowDownCo()
     {
-        Debug.Log("buttface");
+        PauseMenu.SetActive(false);
         slowDownPlease = true;
         yield return new WaitForSeconds(0.1f);
         slowDownPlease = false;
+        PauseMenu.SetActive(true);
     }
 }
