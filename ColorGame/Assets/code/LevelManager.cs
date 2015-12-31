@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour {
 	private ToggleEndLevelUI ToggleUI;
 	public GameObject respawnParticle;
     public GameObject spawn;
+    public bool slowDownPlease;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,14 @@ public class LevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (slowDownPlease)
+        {
+            Time.timeScale = 0.5f;
+        } else if (!slowDownPlease)
+        {
+            Time.timeScale = 1f;
+        }
+
         if (Input.GetKeyDown(KeyCode.X)) {
             
         }
@@ -29,8 +38,12 @@ public class LevelManager : MonoBehaviour {
 	public void RespawnPlayer(){
 			StartCoroutine ("RespawnPlayerCo");
 	}
+    public void SlowDown()
+    {
+        StartCoroutine("SlowDownCo");
+    }
 
-	public IEnumerator RespawnPlayerCo(){
+    public IEnumerator RespawnPlayerCo(){
 		player.enabled = false;
 		player.playerObject.GetComponent<Renderer> ().enabled = false;
 		camera.isFollowing = false;
@@ -50,5 +63,11 @@ public class LevelManager : MonoBehaviour {
 		player.active = false;
 		ToggleUI.visibility = true;
 	}
-
+   public IEnumerator SlowDownCo()
+    {
+        Debug.Log("buttface");
+        slowDownPlease = true;
+        yield return new WaitForSeconds(0.1f);
+        slowDownPlease = false;
+    }
 }

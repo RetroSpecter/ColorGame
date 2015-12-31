@@ -13,6 +13,7 @@ public class ColorManager : MonoBehaviour {
     public KeyCode pad_SelectColor_Green;
     public KeyCode key_SelectColor_Blue;
     public KeyCode pad_SelectColor_Blue;
+    private LevelManager levelManager;
     //public KeyCode key_ToggleColorRotation;
 
 	public enum GameColor {White, Red, Green, Blue};
@@ -35,6 +36,7 @@ public class ColorManager : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         instance = this;
+        levelManager = GetComponent<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -55,9 +57,11 @@ public class ColorManager : MonoBehaviour {
     public void changeColor(GameColor newColor) {
         if (newColor == curUsingColor) {
             curUsingColor = GameColor.White;
+            levelManager.SlowDown();
         }
         else {
             curUsingColor = newColor;
+            levelManager.SlowDown();
         }
         OnColorChange((int)curUsingColor);
     }
@@ -70,7 +74,6 @@ public class ColorManager : MonoBehaviour {
         changeColor((GameColor)newColor);
         //event
         AddNewColor(newColor);
+        
     }
-
-
 }
