@@ -26,6 +26,10 @@ public class Spawn : MonoBehaviour {
         
 	}
     public void spawnIn() {
-        Instantiate(toSpawn, this.transform.position, this.transform.rotation);
+        if(transform.childCount <= 0)
+        {
+            var enemy = Instantiate(toSpawn, this.transform.position, this.transform.rotation) as GameObject;
+            enemy.transform.parent = this.transform;
+        }
     }
 }
