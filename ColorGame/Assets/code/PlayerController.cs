@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void FixedUpdate () {
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, WhatisGround);
-		walled = Physics2D.OverlapCircle (wallCheck.position, wallCheckRadius, WhatisWall);
+        walled = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, WhatisWall);
 	}
 	void Update () {
 
@@ -50,11 +50,11 @@ public class PlayerController : MonoBehaviour {
 		moveVelocity = 0f;
 
 		if(active == true){
-		if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0) {
+		if (Input.GetAxis("Horizontal") > 0.1) {
 				moveVelocity = runSpeed;
 		}
 
-        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") < 0) {
+        if (Input.GetAxis("Horizontal") < -0.1) {
 				moveVelocity = -runSpeed;
 			} 
 		}
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour {
 		//wall Sliding
 		wallSliding = false;
 		if (walled && !grounded && myRigidBody2D.velocity.y < 0) {
-			if((playerObject.transform.rotation.y > 0 && Input.GetKey(KeyCode.LeftArrow)) || (playerObject.transform.rotation.y == 0 && Input.GetKey(KeyCode.RightArrow))){
+			if((playerObject.transform.rotation.y > 0 && Input.GetAxis("Horizontal") < -0.1) || (playerObject.transform.rotation.y == 0 && Input.GetAxis("Horizontal") > 0.1)){
 			wallSliding = true;
 			walling = false;
 			if (myRigidBody2D.velocity.y < -WallSpeedMax){
@@ -92,9 +92,10 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetButtonDown("Jump") && !grounded && walled) {
 			doubleJump = false;
 			walling = true;
-			if(playerObject.transform.rotation.y == 0 && Input.GetKey(KeyCode.RightArrow)){
+			if(playerObject.transform.rotation.y == 0 && Input.GetAxis("Horizontal") > 0.1){
 				myRigidBody2D.velocity = new Vector2 (-wallPush, wallJump);
-			} else if (playerObject.transform.rotation.y > 0 && Input.GetKey(KeyCode.LeftArrow)){
+			} else if (playerObject.transform.rotation.y > 0 && Input.GetAxis("Horizontal") < -0.1)
+            {
 				myRigidBody2D.velocity = new Vector2 (wallPush, wallJump);
 			}
 		}
